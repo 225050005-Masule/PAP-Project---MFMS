@@ -11,9 +11,9 @@ Ananias Julia 224010662
 enterprise management application written in C. The system brings together essential business elements such as Asset Management, Employee Management, reports etc. Features include user menus, and writing records to disk files for long-term storage.
 ## System features 
 Enables users to create, view, and search asset records. A system that allows you to search, add and display available suppliers in the area. The budget system designs budgets for different departments, and Logs individual expenditures. Report compiles structured reports summarizing total assets recorded, current budget usage, and itemized expenditure. 
-##  Compilation instructions
 
 ## How to run the system
+.\program
 
 ## Individual responsibilities 
  Jakoline Hausiku Supplier Management
