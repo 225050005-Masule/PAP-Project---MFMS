@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "employees.h"
 #include "budget.h"
+#include "suppliers.h"
 #include "utils.h"
 
 int main(void)
@@ -11,6 +12,9 @@ int main(void)
     Budget budgets[MAX_BUDGETS];
     int budgetCount = 0;
 
+    Supplier suppliers[MAX_SUPPLIERS];
+    int supplierCount = 0;
+
     int choice;
 
     do
@@ -20,7 +24,8 @@ int main(void)
         printf("====================================\n");
         printf("1. Employee Management\n");
         printf("2. Budget Management\n");
-        printf("3. Exit\n");
+        printf("3. Supplier Management\n");
+        printf("4. Exit\n");
         printf("====================================\n");
 
         choice = getValidInt("Enter choice: ");
@@ -36,14 +41,18 @@ int main(void)
                 break;
 
             case 3:
+                supplierMenu(suppliers,&supplierCount);
+                break;
+
+            case 4:
                 printf("\nExiting program...\n");
                 break;
 
             default:
-                printf("\nInvalid choice. Please choose 1-3.\n");
+                printf("\nInvalid choice. Please choose 1-4.\n");
         }
 
-    } while (choice != 3);
+    } while (choice != 4);
 
     return 0;
 }
