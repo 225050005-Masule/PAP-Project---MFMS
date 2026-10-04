@@ -15,6 +15,8 @@ int assetCount = 0;
 
 
 void displayAssetMenu(void) {
+    int choice = 0;
+    do {
     printf("\n=== ASSET MANAGEMENT MODULE ===\n");
     printf("1. Add New Asset\n");
     printf("2. View All Assets\n");
@@ -23,6 +25,36 @@ void displayAssetMenu(void) {
     printf("5. Load Assets from File\n");
     printf("6. Exit Asset Menu\n");
     printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            
+            while (getchar() != '\n');
+            continue;
+        }
+        getchar(); 
+
+        switch (choice) {
+            case 1:
+                addAsset();
+                break;
+            case 2:
+                assetsList();
+                break;
+            case 3:
+                searchAsset();
+                break;
+            case 4:
+                saveAssetsToFile();
+                break;
+            case 5:
+                loadAssetsFromFile();
+                break;
+            case 6:
+                printf("Exiting Asset Management Module...\n");
+                break;
+            default:
+                printf("Invalid option! Please enter a number between 1 and 6.\n");
+        }
+    } while (choice != 6);
 }
 
 
