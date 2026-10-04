@@ -2,6 +2,7 @@
 #include "employees.h"
 #include "budget.h"
 #include "suppliers.h"
+#include "reports.h"
 #include "utils.h"
 
 int main(void)
@@ -14,6 +15,10 @@ int main(void)
 
     Supplier suppliers[MAX_SUPPLIERS];
     int supplierCount = 0;
+    
+    Reports report[MAX_REPORTS];
+    int reportsCount = 0;
+
 
     int choice;
 
@@ -25,7 +30,8 @@ int main(void)
         printf("1. Employee Management\n");
         printf("2. Budget Management\n");
         printf("3. Supplier Management\n");
-        printf("4. Exit\n");
+        printf("4. Report\n");
+        printf("5. Exit\n");
         printf("====================================\n");
 
         choice = getValidInt("Enter choice: ");
@@ -43,8 +49,12 @@ int main(void)
             case 3:
                 supplierMenu(suppliers,&supplierCount);
                 break;
-
+            
             case 4:
+                reportMenu(report,&reportCount);
+                break;
+
+            case 5:
                 printf("\nExiting program...\n");
                 break;
 
@@ -52,7 +62,7 @@ int main(void)
                 printf("\nInvalid choice. Please choose 1-4.\n");
         }
 
-    } while (choice != 4);
+    } while (choice != 5);
 
     return 0;
 }
