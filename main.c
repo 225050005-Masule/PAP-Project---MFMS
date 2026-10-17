@@ -59,10 +59,11 @@ int main(void)
                 break;
 
             default:
-                printf("\nInvalid choice. Please choose 1-4.\n");
+                printf("\nInvalid choice. Please choose 1-5.\n");
         }
 
     } while (choice != 5);
 
     return 0;
 }
+ 
