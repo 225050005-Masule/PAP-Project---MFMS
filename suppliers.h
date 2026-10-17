@@ -2,21 +2,15 @@
 #define SUPPLIERS_H
 
 #define MAX_SUPPLIERS 100
-#define SUPPLIER_NAME_LEN 64
-#define SUPPLIER_EMAIL_LEN 64
-#define SUPPLIER_PHONE_LEN 20
-#define SUPPLIER_TOWN_LEN 64
 
-typedef struct
-{
+typedef struct {
     int id;
-    char name[SUPPLIER_NAME_LEN];
-    char email[SUPPLIER_EMAIL_LEN];
-    char phone[SUPPLIER_PHONE_LEN];
-    char town[SUPPLIER_TOWN_LEN];
+    char name[50];
+    char email[50];
+    char phone[20];
+    char town[30];
 } Supplier;
 
-int isValidEmail(char email[]);
 void addSupplier(Supplier list[], int *count);
 void displaySuppliers(Supplier list[], int count);
 void searchSupplier(Supplier list[], int count);
