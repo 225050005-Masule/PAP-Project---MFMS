@@ -1,6 +1,10 @@
 #ifndef ASSETS_H
 #define ASSETS_H
 
+#define MAX_ASSETS 50
+#define NAME_SIZE 50
+#define TYPE_SIZE 30
+
 typedef struct {
     char name[NAME_SIZE];
     char type[TYPE_SIZE];
