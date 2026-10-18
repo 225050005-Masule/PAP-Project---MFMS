@@ -3,16 +3,8 @@
 #include "assets.h"
 
 
-#define MAX_ASSETS 50
-#define NAME_SIZE 50
-#define TYPE_SIZE 30
-
-
-char assetName[MAX_ASSETS][NAME_SIZE];
-char assetType[MAX_ASSETS][TYPE_SIZE];
-double assetValue[MAX_ASSETS];
-int assetCount = 0;
-
+Asset assets[MAX_ASSETS];
+int asset_count = 0;
 
 void displayAssetMenu(void) {
     int choice = 0;
