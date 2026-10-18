@@ -1,6 +1,15 @@
 #ifndef ASSETS_H
 #define ASSETS_H
 
+typedef struct {
+    char name[NAME_SIZE];
+    char type[TYPE_SIZE];
+    double value;
+} Asset;
+
+extern Asset assets[MAX_ASSETS];
+extern int asset_count;
+
 void displayAssetMenu(void);
 void addAsset(void);
 void assetsList(void);
