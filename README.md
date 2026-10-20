@@ -23,6 +23,8 @@ Steps
 4. Run the program using:
 ```
    .\program
+```
+
 
 ## Individual responsibilities 
  Jakoline Hausiku Supplier Management
