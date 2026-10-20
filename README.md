@@ -13,7 +13,16 @@ enterprise management application written in C. The system brings together essen
 Enables users to create, view, and search asset records. A system that allows you to search, add and display available suppliers in the area. The budget system designs budgets for different departments, and Logs individual expenditures. Report compiles structured reports summarizing total assets recorded, current budget usage, and itemized expenditure. 
 
 ## How to run the system
-.\program
+Steps
+1. Open VS Code, choose **File > Open Folder**, and select the project folder (the one containing `main.c`).
+2. Open a terminal with **Ctrl + `** (or **Terminal > New Terminal**).
+3. Compile all the source files together using
+```
+   gcc -Wall -o program main.c employees.c budget.c suppliers.c assets.c reports.c utils.c
+```
+4. Run the program using:
+```
+   .\program
 
 ## Individual responsibilities 
  Jakoline Hausiku Supplier Management
