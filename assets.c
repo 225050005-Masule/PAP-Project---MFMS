@@ -18,11 +18,11 @@ void displayAssetMenu(void) {
     printf("6. Exit Asset Menu\n");
     printf("Enter choice: ");
         if (scanf("%d", &choice) != 1) {
-            
+
             while (getchar() != '\n');
             continue;
         }
-        getchar(); 
+        getchar();
 
         switch (choice) {
             case 1:
@@ -51,41 +51,38 @@ void displayAssetMenu(void) {
 
 
 void addAsset(void) {
-    if (assetCount >= MAX_ASSETS) {
+    if (asset_count >= MAX_ASSETS) {
         printf("Error: Asset list is full!\n");
         return;
     }
 
-    
-    getchar();
-
     printf("\nEnter Asset Name: ");
-    fgets(assetName[assetCount], NAME_SIZE, stdin);
+    fgets(assets[asset_count].name, NAME_SIZE, stdin);
     // Remove the newline character added by fgets
-    assetName[assetCount][strcspn(assetName[assetCount], "\n")] = '\0';
+    assets[asset_count].name[strcspn(assets[asset_count].name, "\n")] = '\0';
 
     printf("Enter Asset Type (e.g., Vehicle, Equipment): ");
-    fgets(assetType[assetCount], TYPE_SIZE, stdin);
-    assetType[assetCount][strcspn(assetType[assetCount], "\n")] = '\0';
+    fgets(assets[asset_count].type, TYPE_SIZE, stdin);
+    assets[asset_count].type[strcspn(assets[asset_count].type, "\n")] = '\0';
 
     printf("Enter Asset Value (N$): ");
-    scanf("%lf", &assetValue[assetCount]);
+    scanf("%lf", &assets[asset_count].value);
 
-    assetCount++;
+    asset_count++;
     printf("Asset added successfully!\n");
 }
 
 
 void assetsList(void) {
-    if (assetCount == 0) {
+    if (asset_count == 0) {
         printf("\nNo assets found. Try adding or loading some first.\n");
         return;
     }
 
     printf("\n--- LIST OF REGISTERED ASSETS ---\n");
-    for (int i = 0; i < assetCount; i++) {
-        printf("%d. Name: %s | Type: %s | Value: N$%.2f\n", 
-               i + 1, assetName[i], assetType[i], assetValue[i]);
+    for (int i = 0; i < asset_count; i++) {
+        printf("%d. Name: %s | Type: %s | Value: N$%.2f\n",
+               i + 1, assets[i].name, assets[i].type, assets[i].value);
     }
 }
 
@@ -94,23 +91,22 @@ void searchAsset(void) {
     char search[NAME_SIZE];
     int found = 0;
 
-    if (assetCount == 0) {
+    if (asset_count == 0) {
         printf("\nNo assets to search.\n");
         return;
     }
 
-    getchar(); 
     printf("\nEnter Asset Name to search for: ");
     fgets(search, NAME_SIZE, stdin);
     search[strcspn(search, "\n")] = '\0';
 
-    for (int i = 0; i < assetCount; i++) {
-        
-        if (strcmp(assetName[i], search) == 0) {
+    for (int i = 0; i < asset_count; i++) {
+
+        if (strcmp(assets[i].name, search) == 0) {
             printf("\n--- Asset Found --- \n");
-            printf("Name: %s\n", assetName[i]);
-            printf("Type: %s\n", assetType[i]);
-            printf("Value: N$%.2f\n", assetValue[i]);
+            printf("Name: %s\n", assets[i].name);
+            printf("Type: %s\n", assets[i].type);
+            printf("Value: N$%.2f\n", assets[i].value);
             found = 1;
             break;
         }
@@ -130,13 +126,13 @@ void saveAssetsToFile(void) {
         return;
     }
 
-    for (int i = 0; i < assetCount; i++) {
-        
-        fprintf(file, "%s|%s|%.2f\n", assetName[i], assetType[i], assetValue[i]);
+    for (int i = 0; i < asset_count; i++) {
+
+        fprintf(file, "%s|%s|%.2f\n", assets[i].name, assets[i].type, assets[i].value);
     }
 
     fclose(file);
-    printf("Successfully saved %d assets to assets.txt!\n", assetCount);
+    printf("Successfully saved %d assets to assets.txt!\n", asset_count);
 }
 
 
@@ -148,17 +144,22 @@ void loadAssetsFromFile(void) {
         return;
     }
 
-    assetCount = 0; 
-    
-    while (fscanf(file, " %49[^|]|%29[^|]|%lf\n", 
-                  assetName[assetCount], 
-                  assetType[assetCount], 
-                  &assetValue[assetCount]) == 3) {
-        assetCount++;
-        if (assetCount >= MAX_ASSETS) {
+    asset_count = 0;
+
+    while (fscanf(file, " %49[^|]|%29[^|]|%lf\n",
+                  assets[asset_count].name,
+                  assets[asset_count].type,
+                  &assets[asset_count].value) == 3) {
+        asset_count++;
+        if (asset_count >= MAX_ASSETS) {
             break;
         }
     }
+
+    fclose(file);
+    printf("Successfully loaded %d assets from assets.txt!\n", asset_count);
+}
+
 
     fclose(file);
     printf("Successfully loaded %d assets from assets.txt!\n", assetCount);
