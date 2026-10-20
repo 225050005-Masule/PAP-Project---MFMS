@@ -159,8 +159,3 @@ void loadAssetsFromFile(void) {
     fclose(file);
     printf("Successfully loaded %d assets from assets.txt!\n", asset_count);
 }
-
-
-    fclose(file);
-    printf("Successfully loaded %d assets from assets.txt!\n", assetCount);
-}
