@@ -56,6 +56,7 @@ int indexOfMax(const float values[], int count) {
         }
     }
     return maxPos;
+}
 
 int indexOfMin(const float values[], int count) {
     if(count <= 0) return -1;
@@ -304,7 +305,4 @@ void assetReport(int count, const int ids[],
                ids[i], names[i], types[i], moneyText, depts[i], conditions[i]);
     }
     printLine('-');
-    
-    return 0;
-
 }
